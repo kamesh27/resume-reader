@@ -1,0 +1,646 @@
+:root {
+  /* Default Dark Theme Variables */
+  --bg-primary: #1e1e1e; /* Slightly darker base */
+  --bg-secondary: #2a2a2a; /* Slightly adjusted secondary */
+  --bg-tertiary: #333333; /* Adjusted tertiary */
+  --bg-quaternary: rgba(255, 255, 255, 0.03);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-selected: #4a5a7a;
+  --bg-selected-hover: #5a6a8a;
+  --bg-button: #383838; /* Slightly lighter button bg */
+  --bg-button-hover: #333; /* Approximation */
+  --bg-button-disabled: #444;
+  --bg-button-nav: transparent;
+  --bg-button-nav-active: #444;
+  --bg-button-nav-hover: rgba(255, 255, 255, 0.05);
+  --bg-button-copy: #333;
+  --bg-button-copy-hover: #444;
+  --bg-button-delete: #5c2121;
+  --bg-button-delete-hover: #7c3131;
+  --bg-button-delete-disabled: #4a2a2a;
+  --bg-error: rgba(255, 107, 107, 0.1);
+
+  --text-primary: #e0e0e0; /* Slightly softer white */
+  --text-secondary: #b0b0b0; /* Adjusted secondary */
+  --text-tertiary: #999999; /* Adjusted tertiary */
+  --text-placeholder: #cccccc; /* Adjusted placeholder */
+  --text-button: #e0e0e0; /* Match primary text */
+  --text-button-nav: #b0b0b0; /* Match secondary text */
+  --text-button-nav-active: #ffffff; /* Keep active bright */
+  --text-button-delete: #ffdddd;
+  --text-error: #ff6b6b;
+  --text-link: #9ecbff;
+  --text-suggestion: #c0c0c0; /* Adjusted suggestion text */
+  --text-suggestion-strong: #87CEFA;
+
+  --border-primary: #444;
+  --border-secondary: #555;
+  --border-tertiary: #4a4a4a;
+  --border-button: transparent;
+  --border-button-hover: #646cff;
+  --border-button-copy: #555;
+  --border-button-copy-hover: #666;
+  --border-button-delete: #8c3131;
+  --border-button-delete-hover: #ac4141;
+  --border-button-delete-disabled: #6a3a3a;
+  --border-error: rgba(255, 107, 107, 0.3);
+  --border-jd-completed: #5cb85c;
+  --border-jd-processing: #f0ad4e;
+  --border-jd-failed: #d9534f;
+  --border-jd-pending: #777;
+
+  --color-scheme: light dark;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: var(--color-scheme);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Light Theme Variable Overrides */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f0f0;
+    --bg-tertiary: #f9f9f9;
+    --bg-quaternary: #f9f9f9;
+    --bg-hover: #f0f0f0;
+    --bg-selected: #e0e8f8;
+    --bg-selected-hover: #d0d8e8;
+    --bg-button: #e0e0e0;
+    --bg-button-hover: #d0d0d0;
+    --bg-button-disabled: #ddd;
+    --bg-button-nav: transparent;
+    --bg-button-nav-active: #ddd;
+    --bg-button-nav-hover: rgba(0, 0, 0, 0.02);
+    --bg-button-copy: #eee;
+    --bg-button-copy-hover: #ddd;
+    --bg-button-delete: #f8d7da;
+    --bg-button-delete-hover: #f5c6cb;
+    --bg-button-delete-disabled: #fbdde0;
+    --bg-error: rgba(217, 83, 79, 0.1);
+
+    --text-primary: #213547;
+    --text-secondary: #555;
+    --text-tertiary: #777;
+    --text-placeholder: #333; /* Assumed */
+    --text-button: #213547;
+    --text-button-nav: #555;
+    --text-button-nav-active: #333;
+    --text-button-delete: #721c24;
+    --text-error: #d9534f;
+    --text-link: #0056b3;
+    --text-suggestion: #444;
+    --text-suggestion-strong: #007bff;
+
+    --border-primary: #ddd;
+    --border-secondary: #ccc;
+    --border-tertiary: #ddd;
+    --border-button: transparent;
+    --border-button-hover: #747bff;
+    --border-button-copy: #ccc;
+    --border-button-copy-hover: #bbb;
+    --border-button-delete: #f5c6cb;
+    --border-button-delete-hover: #f1b0b7;
+    --border-button-delete-disabled: #f8d0d4;
+    --border-error: rgba(217, 83, 79, 0.3);
+    /* Keep JD status borders consistent for visibility */
+    /* --border-jd-completed: #5cb85c; */
+    /* --border-jd-processing: #f0ad4e; */
+    /* --border-jd-failed: #d9534f; */
+    /* --border-jd-pending: #777; */
+
+    --color-scheme: light;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5em; /* Larger heading */
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* --- New App Layout Styles --- */
+.app-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh; /* Ensure layout takes full viewport height */
+  box-sizing: border-box;
+}
+
+.app-sidebar {
+  width: 250px; /* Fixed width for sidebar */
+  background-color: var(--bg-tertiary); /* Slightly different background */
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.app-sidebar h1 {
+  font-size: 1.8em; /* Smaller heading for sidebar */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-content {
+  flex-grow: 2; /* Takes remaining width */
+  padding: 1.5rem 2rem; /* Add padding to content area */
+  background-color: var(--bg-secondary); /* Main content background */
+  overflow-y: auto; /* Allow content scrolling if needed */
+  box-sizing: border-box;
+}
+
+/* --- Adjust Module Navigation for Sidebar --- */
+.module-nav {
+  margin-bottom: 0; /* Remove bottom margin */
+  border-bottom: none; /* Remove bottom border */
+  padding-bottom: 0; /* Remove bottom padding */
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 0.5rem; /* Adjust gap */
+  margin-top: auto; /* Push nav to bottom if sidebar has extra space */
+}
+
+.module-nav button {
+  width: 100%; /* Make buttons full width of sidebar */
+  text-align: left; /* Align text left */
+  padding: 0.8em 1em; /* Adjust padding */
+  justify-content: flex-start; /* Align icon/text left if icons were added */
+}
+
+
+/* --- Adjustments to existing styles --- */
+
+.input-section {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column; /* Stack label, input, button */
+    align-items: flex-start; /* Align items left */
+    gap: 0.8rem;
+}
+
+.input-section label {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.input-section input[type="file"] {
+    padding: 8px;
+    border: 1px solid var(--border-secondary);
+    border-radius: 4px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    transition: border-color 0.25s, box-shadow 0.25s; /* Add transitions */
+    cursor: pointer; /* Indicate it's clickable */
+}
+.input-section input[type="file"]:focus-within { /* Style when the element or its descendants have focus */
+    outline: none;
+    border-color: var(--text-link); /* Use link color for focus border */
+    box-shadow: 0 0 0 2px rgba(var(--text-link), 0.3); /* Subtle focus glow */
+}
+
+/* Style the file input button */
+.input-section input[type="file"]::file-selector-button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--bg-button);
+    color: var(--text-button);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.input-section input[type="file"]::file-selector-button:hover {
+     background-color: var(--bg-button-hover);
+}
+
+
+button {
+  border-radius: 6px; /* Slightly sharper radius */
+  border: 1px solid var(--border-button);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-button);
+  color: var(--text-button);
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s; /* Added background-color and box-shadow */
+  align-self: flex-start; /* Align button left */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
+}
+button:hover:not(:disabled) { /* Ensure disabled state doesn't get hover styles */
+  border-color: var(--border-button-hover);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+button:focus,
+button:focus-visible {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(var(--border-button-hover), 0.4); /* Custom focus ring using variable color */
+}
+button:disabled {
+    background-color: var(--bg-button-disabled);
+    border-color: transparent; /* Hide border on disabled */
+    cursor: not-allowed;
+    opacity: 0.6; /* Slightly more faded */
+    box-shadow: none; /* Remove shadow when disabled */
+}
+
+
+.output-section {
+    margin-top: 2rem;
+    border: 1px solid var(--border-primary);
+    padding: 1.5rem;
+    min-height: 200px;
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.suggestion-block {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-tertiary); /* Changed to solid, using tertiary border */
+}
+
+.suggestion-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.original-point {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.suggestion {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95em;
+    color: var(--text-suggestion);
+    line-height: 1.4;
+}
+
+.suggestion strong { /* Highlight C-A-R keywords if backend provides them */
+    color: var(--text-suggestion-strong);
+    font-weight: 600;
+}
+
+.status-message, .error-message {
+    font-style: italic;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: var(--text-error);
+    background-color: var(--bg-error);
+    border: 1px solid var(--border-error);
+}
+
+.status-message {
+    color: var(--text-tertiary);
+}
+
+/* --- Module Navigation --- */
+.module-nav {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem; /* Reduced gap */
+}
+
+/* .module-nav button styles moved above and adjusted */
+
+.module-nav button:hover:not(:disabled) {
+  border-color: var(--border-secondary); /* Adjust hover border if needed */
+  background-color: var(--bg-button-nav-hover);
+}
+
+.module-nav button:disabled,
+.module-nav button.active { /* Style active button */
+  opacity: 1;
+  background-color: var(--bg-button-nav-active);
+  border-color: transparent; /* Remove side borders */
+  border-left: 3px solid var(--text-link); /* Add distinct left border */
+  color: var(--text-button-nav-active);
+  cursor: default;
+  padding-left: calc(1em - 3px); /* Adjust padding to account for border */
+}
+
+/* --- Copy Button --- */
+.suggestion button.copy-button {
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  margin-left: 1rem;
+  vertical-align: middle; /* Align better with text */
+  background-color: var(--bg-button-copy);
+  border-color: var(--border-button-copy);
+  color: var(--text-button); /* Use default button text color */
+}
+
+.suggestion button.copy-button:hover {
+  background-color: var(--bg-button-copy-hover);
+  border-color: var(--border-button-copy-hover);
+}
+
+
+/* --- JD Analyzer Specific Styles --- */
+.section-container {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-quaternary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+}
+
+.section-container h3 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-secondary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.section-container h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Role Manager */
+.create-role-form {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.create-role-form input[type="text"] {
+  flex-grow: 1; /* Allow input to take available space */
+  padding: 0.5em 0.8em;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 4px;
+  color: var(--text-primary); /* Use primary text color when filled */
+  transition: border-color 0.25s, box-shadow 0.25s; /* Add transitions */
+}
+.create-role-form input[type="text"]::placeholder {
+    color: var(--text-placeholder); /* Ensure placeholder uses placeholder color */
+}
+.create-role-form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--text-link); /* Use link color for focus border */
+    box-shadow: 0 0 0 2px rgba(var(--text-link), 0.3); /* Subtle focus glow */
+}
+.create-role-form button {
+  align-self: center; /* Override default align-self: flex-start */
+}
+
+.role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px; /* Limit height and add scroll */
+  overflow-y: auto;
+  border: 1px solid var(--border-tertiary);
+  border-radius: 4px;
+}
+.role-list li {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border-tertiary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out name and info */
+  align-items: center;
+}
+.role-list li:last-child {
+  border-bottom: none;
+}
+.role-list li:hover {
+  background-color: var(--bg-hover);
+}
+.role-list li.selected {
+  background-color: var(--bg-selected);
+  color: var(--text-button-nav-active); /* Use active nav text color for contrast */
+  font-weight: bold;
+}
+.role-list li.selected:hover {
+  background-color: var(--bg-selected-hover);
+}
+.role-info {
+  font-size: 0.85em;
+  color: var(--text-tertiary);
+  margin-left: 1rem;
+}
+.role-list li.selected .role-info {
+  color: var(--text-suggestion); /* Use suggestion color for contrast */
+}
+
+
+/* JD Manager */
+.add-jd-form {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.jd-input-group {
+  display: flex;
+  flex-direction: column; /* Stack label and input */
+  flex-grow: 1; /* Allow groups to take space */
+  min-width: 250px; /* Prevent inputs becoming too small */
+}
+.jd-input-group label {
+  font-size: 0.85em;
+  margin-bottom: 0.2rem;
+  color: var(--text-secondary);
+}
+.add-jd-form input[type="url"],
+.add-jd-form input[type="file"] {
+  width: 100%; /* Ensure input fills group */
+  padding: 0.5em 0.8em;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 4px;
+  color: var(--text-primary); /* Use primary text when filled */
+  transition: border-color 0.25s, box-shadow 0.25s; /* Add transitions */
+}
+.add-jd-form input[type="url"]::placeholder,
+.add-jd-form input[type="file"]::placeholder { /* Target placeholders specifically */
+    color: var(--text-placeholder);
+}
+.add-jd-form input[type="url"]:focus,
+.add-jd-form input[type="file"]:focus { /* Add focus styles */
+    outline: none;
+    border-color: var(--text-link); /* Use link color for focus border */
+    box-shadow: 0 0 0 2px rgba(var(--text-link), 0.3); /* Subtle focus glow */
+}
+.add-jd-form button {
+  align-self: center;
+}
+.add-jd-form button[type="button"] { /* Style refresh button differently */
+  padding: 0.5em 0.8em; /* Match height of inputs */
+  font-size: 0.9em;
+  background-color: var(--bg-button-copy); /* Use copy button bg */
+  align-self: flex-end; /* Align with bottom of inputs */
+}
+.add-jd-form > span { /* Style the 'OR' text */
+  align-self: flex-end;
+  padding-bottom: 0.5em; /* Align with bottom of inputs */
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+
+.jd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.jd-item {
+  padding: 0.8rem;
+  border: 1px solid var(--border-tertiary);
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  /* background-color: rgba(0, 0, 0, 0.1); Removed this overlay */
+  display: grid; /* Use grid for layout */
+  grid-template-columns: 1fr auto; /* URL takes space, status/actions auto width */
+  grid-template-areas:
+    "source actions" /* Use source area */
+    "status actions"
+    "error error";
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+.jd-source { /* Renamed class */
+  grid-area: source;
+  word-break: break-all; /* Break long URLs */
+}
+.jd-source a { /* Style links within source */
+  color: var(--text-link);
+  text-decoration: none;
+}
+.jd-source a:hover {
+  text-decoration: underline;
+}
+.jd-status {
+  grid-area: status;
+  font-size: 0.9em;
+  color: var(--text-tertiary);
+}
+.jd-status strong {
+  text-transform: capitalize;
+}
+.jd-actions {
+  grid-area: actions;
+  justify-self: end; /* Align actions to the right */
+}
+.jd-actions button {
+  padding: 0.3em 0.7em;
+  font-size: 0.9em;
+}
+.jd-actions span { /* Style for 'Processing...' text */
+   font-size: 0.9em;
+   font-style: italic;
+   color: var(--text-tertiary);
+}
+.jd-error {
+  grid-area: error;
+  font-size: 0.85em;
+  margin-top: 0.3rem;
+  padding: 0.4rem 0.6rem !important; /* Override general error message padding */
+}
+
+/* Status-specific styling */
+.jd-item.status-completed { border-left: 4px solid var(--border-jd-completed); }
+.jd-item.status-processing { border-left: 4px solid var(--border-jd-processing); }
+.jd-item.status-failed { border-left: 4px solid var(--border-jd-failed); }
+.jd-item.status-pending { border-left: 4px solid var(--border-jd-pending); }
+
+
+/* Keyword Summary */
+.keyword-summary {
+  max-height: 400px; /* Adjust as needed */
+  overflow-y: auto;
+}
+.keyword-summary button { /* Refresh button */
+  align-self: flex-start; /* Override default */
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+  padding: 0.4em 0.8em;
+  background-color: var(--bg-button-copy); /* Use copy button bg */
+}
+.keyword-summary p {
+  margin-bottom: 1rem;
+}
+.keyword-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  column-count: 2; /* Display in columns */
+  column-gap: 2rem;
+  /* Removed max-height and overflow-y from here */
+}
+.keyword-list li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95em;
+}
+.keyword-text {
+  color: var(--text-placeholder); /* Use placeholder color */
+}
+.keyword-count {
+  font-size: 0.9em;
+  color: var(--text-tertiary);
+  margin-left: 0.5rem;
+}
+
+
+/* --- Delete Button Styles --- */
+button.delete-button {
+  background-color: var(--bg-button-delete);
+  color: var(--text-button-delete);
+  border-color: var(--border-button-delete);
+  padding: 0.3em 0.7em; /* Smaller padding */
+  font-size: 0.9em;
+  margin-left: 8px; /* Space from other buttons/text */
+  vertical-align: middle; /* Align with text/other buttons */
+}
+
+button.delete-button:hover:not(:disabled) {
+  background-color: var(--bg-button-delete-hover);
+  border-color: var(--border-button-delete-hover);
+}
+
+button.delete-button:disabled {
+  background-color: var(--bg-button-delete-disabled);
+  border-color: var(--border-button-delete-disabled);
+  opacity: 0.6;
+}
+
+/* Specific style for role delete button if needed */
+.role-delete-button {
+  padding: 0.2em 0.5em; /* Even smaller */
+  font-size: 0.8em;
+  margin-left: 10px;
+}
