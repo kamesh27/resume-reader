@@ -1,0 +1,30 @@
+- Summary: B2B SaaS Revenue Operations manager with 5 years of professional experience in problem-solving, streamlining processes, and managing execution of cross-functional initiatives. Worked with over for 5 sales teams helping close over 200+ customers generating over 2 million USD in annual subscription value by handling the administration of the tech stack across the revenue cycle in a SaaS environment.
+
+Job:
+Title: Revenue Operations Manager
+Company: Radius
+Start Month: September
+Start Year: 2024
+End Month:  
+Currently in this Job:  yes
+Points:
+- Reimplemented the CRM for the organization owning end-to-end deployment, implementation, and management of the CRM.
+- Built a new sales processes with automation and workflow integrated providing the required agility enable the sales team and reduce manual activity.
+- Providing actionable insights to company leadership to improve pipeline efficiency, improve forecast accuracy, and improve data quality.
+- Working closely with marketing to implement growth channels with a direct impact on revenue.
+
+Job:
+Title: Growth Marketing Manager
+Company: Locad
+Start Month: April
+Start Year: 2021
+End Month: November
+End Year: 2023
+Currently in this Job: No
+Points:
+- Built, managed, and maintained configuration of the GTM tech stack including Reporting platforms, HubSpot CRM, and marketing automation platforms providing technical support to cross-functional teams
+- Built, managed, and improved processes for GTM across the entire customer funnel working with cross-functional teams from 5 countries - creating consistency in implementation, optimization of marketing and sales processes, and platform integrations leading to better data management, funnel conversion rate, and sales revenue growth
+- Assisted strategic decision-making by building real-time reporting using analytics tools for representing key metrics related to sales pipeline, sales activity, sales target completion, quota and incentive calculation, campaign ROI, Key Performance Indicators (KPIs), and revenue forecasts reducing manual effort by 25 hours per week
+- Conducted data analysis of previous sales data to identify bottlenecks and optimize sales tactics collaborated with stakeholders to build a pipeline & revenue forecasting model to break down sales targets further into daily quotas and marketing targets increasing customers signed in the next quarter by 31%
+- Drove reactivation by segmenting inactive users and testing multiple promotion codes customized for cohorts leading to a 100% increase in monthly active users on a product-led platform with a 200% increase in wallet top-ups compared to the previous month
+- Partnered closely with engineering teams developing custom integration between Freshdesk and HubSpot improving reporting by making our CRM the single source of truth for the business
